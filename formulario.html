@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" charset="UTF-8"content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        
+        #principal { width: 95vw; font: 23px Arial monospace;}
+        #add_valores {width: max-content; background-color: aquamarine;}
+        #add_valores, #tipo, input {font-family: Arial, Helvetica, sans-serif; font-size: 23px;}
+        #valor {width: 10rem;}
+
+        #d_entradas, #d_gastos {width: 45vw; max-height: 45vh; display: inline-block; overflow-y: scroll;}
+        #tab_Ganhos * {border: 3px solid rgb(187, 239, 210);}
+        #tab_Gastos * {border: 3px solid rgb(237, 167, 167);}
+        #tab_Ganhos td, #tab_Gastos td {max-width: 100%; width: 50vw; }
+        #tot_Gastos, #tot_Ganhos {position: sticky; bottom: 0%; background-color: aliceblue;}
+        .inputa {display: inline-block;}
+    </style>
+    <body>
+        <div id="principal">
+            <form id="listagem">
+               <!-- limite total de quanto pode gastar -->
+                <label for="limite" id="l_entrada">&emsp;&ensp;Pode gastar:</label>
+                <label id="limite">NADA</label>
+                <br><br>
+
+                <!-- o quanto ainda pode ser gasto -->
+                <label for="saldo" id="l_saldo">&emsp;&ensp;Restante</label>
+                <label id="saldo">Saldo atual</label>
+                <br><br>
+
+                <div id="d_entradas">
+                <!-- lista de todas as entradas -->
+                    <div id="tabela_entradas">
+                        <table id="t_in">
+                            <tr><th colspan="2">Ganhos</th></tr>
+                            <tr>
+                                <th id="nom_gan">Item</th>
+                                <th id="val_gan">Valor</th></tr>
+                            <tr id="ganho_001"><td>exemplo</td><td>0</td></tr>
+                            <tr id="total"><th>total</th><th>0</th></tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="d_gastos">
+                <!--lista de todos os gastos-->
+                    <div id="tabela_gastos">
+                        <table id="t_out">
+                            <tr><th colspan="2">Ganhos</th></tr>
+                            <tr>
+                                <th id="nom_gas">Item</th>
+                                <th id="val_gas">Valor</th></tr>
+                            <tr id="gasto_001"><td>exemplo</td><td>0</td></tr>
+                            <tr id="total"><th>total</th><th>0</th></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div id="secundario">
+            <form id="add_valores">
+                <p id="novo_t"><strong> Novo Fluxo</strong></p>
+                <select name="tipo" id="tipo">
+                    <option value="out">Saída</option>
+                    <option value="in">Entrada</option>
+                    <option value="fluxo" selected hidden>Fluxo</option>
+                </select>
+                <br><br>
+                <div class="inputa">
+                    <label for="origem" id="l_fonte">fonte</label><br>
+                    <input type="text" id="origem" placeholder="nome">
+                </div>
+                <div class="inputa">
+                    <label for="valor" id="l_valor">Valor</label><br>
+                    <input type="text" id="valor"><br>
+                </div>
+                <br><br>
+                <input type="button" value="Enviar" id="enviar">
+                &emsp14;
+                <input type="reset" value="limpar" id="res_valores">
+            </form>
+        </div>
+    </body>
+    <script src="basico.js"></script>
+    <script>        
+        
+        let recs = [{nome:"esquina", valor:"150.00"}, {nome:"strip", valor:"230.00"}, {nome:"", valor:"50.00"}, {nome:"", valor:"80.00"}, {nome:"", valor:"20.00"}, {nome:"serviço completo 1", valor:"250.00"}];
+        let pagos = [{nome:"água", valor:"100.00"}, {nome:"luz",valor:"500.00"},{nome:"telefone", valor:"1000.00"},{nome:"vivo controle", valor:"90.00"},{nome:"internet", valor:"200.00"},{nome:"compras do mês", valor:"1000.00"},{nome:"fatura do cartão", valor:"25000.00"}];
+        let permitido = 1000.00;
+
+        escreve("limite", permitido, true);
+
+        refaz();
+    </script>
+</html>
